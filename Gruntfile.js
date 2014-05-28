@@ -50,6 +50,23 @@ module.exports = function(grunt) {
         ],
         dest: 'batarang-release-' + Date.now() + '.zip'
       }
+    },
+    copy: {
+      dev: {
+        expand: true,
+        src: [
+          'css/*.css',
+          'img/**',
+          'js/**',
+          'panes/*.html',
+          'panel.html',
+          'LICENSE',
+          'manifest.json',
+          'background.html',
+          'devtoolsBackground.html'
+        ],
+        dest: 'batarang-dev'
+      }
     }
   });
 
@@ -103,6 +120,7 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-release');
   grunt.loadNpmTasks('grunt-zip');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-conventional-changelog');
 
   grunt.registerTask('default', ['bump', 'markdown', 'changelog', 'release', 'zip']);
