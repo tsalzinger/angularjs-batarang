@@ -6,11 +6,9 @@ angular.module('panelApp').controller('OptionsCtrl', function OptionsCtrl($scope
     app: false
   };
 
-  ['scopes', 'bindings', 'app'].forEach(function (thing) {
-    $scope.$watch('debugger.' + thing, function (val) {
-      appHighlight[thing](val);
-    });
-  });
+  $scope.$watch('debugger', function (val) {
+    appHighlight(val);
+  }, true);
 
   appInfo.getAngularVersion(function (version) {
     $scope.$apply(function () {
